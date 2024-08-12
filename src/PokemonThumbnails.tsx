@@ -8,7 +8,7 @@ type poke = {
 
 export default function PokemonThumbnails({ id, name, image, type }:poke) {
     return(
-        <div>
+        <div className="thumb-container grass">
             <div className="number">
                 <small>#0{id}</small>
             </div>
