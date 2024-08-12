@@ -3,7 +3,10 @@ type poke = {
     id: number,
     name: string,
     image: string,
-    type: string
+    iconImage: string,
+    type: string,
+    jpName: string,
+    jpType: string,
 }
 
 export default function PokemonThumbnails({ id, name, image, type }:poke) {
