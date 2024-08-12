@@ -9,7 +9,7 @@ type poke = {
     jpType: string,
 }
 
-export default function PokemonThumbnails({ id, name, image, type }:poke) {
+export default function PokemonThumbnails({ id, name, jpName , image, jpType }:poke) {
     return(
         <div className="thumb-container grass">
             <div className="number">
@@ -17,8 +17,8 @@ export default function PokemonThumbnails({ id, name, image, type }:poke) {
             </div>
             <img src={image} alt={name} />
             <div className="detail-wrapper">
-                <h4>{name}</h4>
-                <h3>{type}</h3>
+                <h4>{jpName}</h4>
+                <h3>{jpType}</h3>
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import PokemonThumbnails from './PokemonThumbnails';
 import pokemonJson from "./pokemon.json";
 import pokemonTypeJson from "./pokemonType.json";
 
-type PokemonType = "grass" | "fire" | "water" | "bug" | "normal" | "poison" | "electric" | "ground" | "fairy" | "fighting" | "psychic" | "rock" | "ice" | "dragon" | "ghost" | "steel" | "dark";
+type PokemonType = keyof typeof pokemonTypeJson;
 
 type Pokemon = {
   id: number;
@@ -108,11 +108,18 @@ function App() {
     setAllPokemons(currentList => [...currentList, ...newPokemons]);
   };
 
-  const translateToJapanese = async (name: string, type: PokemonType): Promise<{ name: string; type: string }> => {
+  const translateToJapanese = async (
+    name: string,
+    type: PokemonType
+  ): Promise<{ name: string; type: string }> => {
+    // ポケモン名を小文字に統一して検索
     const jpName = pokemonJson.find(
-      (pokemon: PokemonJson) => pokemon.en.toLowerCase() === name
+      (pokemon: PokemonJson) => pokemon.en.toLowerCase() === name.toLowerCase()
     )?.ja || name;
+  
+    // タイプの翻訳
     const jpType = pokemonTypeJson[type] || type;
+  
     return { name: jpName, type: jpType };
   };
 
